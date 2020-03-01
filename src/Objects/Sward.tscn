@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/stars-small.png" type="Texture" id=1]
+[ext_resource path="res://assets/sward.png" type="Texture" id=2]
+[ext_resource path="res://assets/blip.wav" type="AudioStream" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+
+# Declare member variables here. Examples:
+# var a: int = 2
+# var b: String = \"text\"
+
+onready var anym_player:=get_node(\"AnimationPlayer\")
+onready var audio:=get_node(\"AudioPlayerBlip\")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+#	pass
+
+
+func _on_Sward_body_entered(body: Node) -> void:
+	if body.name == \"Player\":
+		anym_player.play(\"FadeOut\")
+		audio.play()
+		#queue_free()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name==\"FadeOut\":
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.2805, 22.0174 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.866667 ), Color( 1, 1, 1, 0.741176 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 0.466667 ), Color( 1, 1, 1, 0.403922 ), Color( 1, 1, 1, 0.333333 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("star:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.258816 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.0509804 ), Color( 1, 1, 1, 0.121569 ), Color( 1, 1, 1, 0.243137 ), Color( 1, 1, 1, 0.333333 ), Color( 1, 1, 1, 0.380392 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.443137 ), Color( 1, 1, 1, 0.486275 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 0.709804 ), Color( 1, 1, 1, 0.807843 ), Color( 1, 1, 1, 0.878431 ), Color( 1, 1, 1, 0.764706 ), Color( 1, 1, 1, 0.52549 ), Color( 1, 1, 1, 0.427451 ), Color( 1, 1, 1, 0.341176 ), Color( 1, 1, 1, 0.145098 ) ]
+}
+
+[node name="Sward" type="Area2D"]
+scale = Vector2( 1.39303, 1.39303 )
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( -10, 0 )
+
+[node name="star" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+position = Vector2( 13.8262, -5.09857 )
+texture = ExtResource( 1 )
+offset = Vector2( -10, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -9.90791, 0.645201 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeStars"
+anims/FadeOut = SubResource( 4 )
+anims/FadeStars = SubResource( 3 )
+
+[node name="AudioPlayerBlip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_Sward_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

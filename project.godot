@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gona"
+run/main_scene="res://src/Levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [input]

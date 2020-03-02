@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/Ancient Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Plain Germanica.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
-size = 55
+size = 36
 outline_color = Color( 0.835294, 0.823529, 0.105882, 1 )
 font_data = ExtResource( 1 )
 
@@ -16,12 +16,14 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 0.854902, 0.858824, 0.254902, 1 )
-margin_left = 785.091
-margin_top = 12.8972
-margin_right = 860.091
-margin_bottom = 50.8972
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -161.0
+margin_top = 15.0
+margin_right = -34.0
+margin_bottom = 55.0
 custom_fonts/font = SubResource( 1 )
-text = "Score:"
+text = "Score: %s"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Objects/LevelTo.gd" type="Script" id=1]
+[ext_resource path="res://src/Levels/Level1.tscn" type="PackedScene" id=2]
+
+[node name="LevelTo" type="Node"]
+script = ExtResource( 1 )
+level_to_go = ExtResource( 2 )
+level_name = "level 1"

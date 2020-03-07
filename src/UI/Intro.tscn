@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Silver Grey  -1000x1000.png" type="Texture" id=1]
 [ext_resource path="res://assets/light1.png" type="Texture" id=2]
 [ext_resource path="res://src/UI/Light.gd" type="Script" id=3]
 [ext_resource path="res://assets/Plain Germanica.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/UI/Intro.gd" type="Script" id=5]
-[ext_resource path="res://src/Levels/Level1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 size = 55
@@ -29,8 +28,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 575.762 ],
 "_edit_vertical_guides_": [ 1017.51 ]
 }
-level = ExtResource( 6 )
-level_name = "Level 1"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.137255, 0.117647, 0.117647, 1 )

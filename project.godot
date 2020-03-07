@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Gona"
-run/main_scene="res://src/Levels/Level1.tscn"
+run/main_scene="res://src/UI/Intro.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerData="*res://src/Utility/PlayerData.tscn"
 
 [input]
 

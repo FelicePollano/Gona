@@ -14,6 +14,7 @@ func _physics_process(delta: float) -> void:
 		audio.play()
 		#player.set_global_position(Vector2.ZERO)
 		player.queue_free()
+		PlayerData.score=0
 		anim.play("Respawn")
 		
 	

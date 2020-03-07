@@ -1,6 +1,6 @@
 extends "res://src/actors/actor.gd"
 
-
+const kill_score:=10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,4 +22,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Stomper_body_entered(body: Node) -> void:
+	PlayerData.score += kill_score
 	queue_free()

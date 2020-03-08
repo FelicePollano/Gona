@@ -10,13 +10,14 @@ func respawn() -> void:
 # var b: String = "text"
 func _physics_process(delta: float) -> void:
 	var player := get_node("Player/.") as KinematicBody2D
-	if null != player and player.get_global_position().y > 573:
-		audio.play()
-		#player.set_global_position(Vector2.ZERO)
-		player.queue_free()
-		PlayerData.score=0
-		anim.play("Respawn")
-		
+	
+	#if null != player and player.get_global_position().y > 573:
+	#	audio.play()
+	#	#player.set_global_position(Vector2.ZERO)
+	#	player.queue_free()
+	#	PlayerData.score=0
+	#	anim.play("Respawn")
+	#	
 	
 
 # Called when the node enters the scene tree for the first time.
